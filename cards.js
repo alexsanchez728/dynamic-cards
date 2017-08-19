@@ -1,4 +1,5 @@
 var inputText = document.getElementById("inputText");
+var textBox = document.getElementsByClassName("textBox");
 var txt = "";
 var textArray = [];
 
@@ -14,10 +15,10 @@ document.body.addEventListener('keypress', function(event){
 		writeToDom(textArray[textArray.length - 1]);
 		// console.log("input text", txt);
 		// console.log("array objects",textArray);
-		console.log("input field", inputText.value)
+		console.log("input field before", inputText.value)
 
 		inputText.value = "";
-		console.log("input field", inputText.value)
+		console.log("input field after", inputText.value)
 	}
 });
 
@@ -28,8 +29,14 @@ document.body.addEventListener('keypress', function(event){
 
 // 2.  When the user clicks the Delete button, the containing card, and no other cards, should then be removed from the DOM.
 //   2a. Not just made invisible, actually removed from the DOM. -->
-		// using splice??
 		// using target, and removing the div??
+		document.body.addEventListener('click', function(e){
+			if (e.target.className === "deleteBtn"){
+				document.body.removeChild(e.target.parentElement);
+			}
+			console.log(e.target.className)
+			console.log(e)
+		})
 
 //Functions
 function domString(someText) {
@@ -40,7 +47,6 @@ function domString(someText) {
 		//		1b. Which also includes it's own delete button.
 		outputCard +=		`<button class="deleteBtn">Delete Card</button>`
 		outputCard += `</div>`;
-		console.log("domString function, outputCard is ", outputCard);
 		textArray.push(outputCard);
 
 	// }
