@@ -12,6 +12,7 @@ function domString() {
 		//		1b. Which also includes it's own delete button.
 		outputCard +=		`<button class="deleteBtn">Delete Card</button>`;
 		outputCard += `</div>`;
+		writeToDom(outputCard);
 		inputText.value = "";
 }
 // 2.  When the user clicks the Delete button, the containing card, and no other cards, should then be removed from the DOM.
